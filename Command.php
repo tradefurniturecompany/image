@@ -16,5 +16,8 @@ final class Command extends \Df\Framework\Console\Command {
 	 * @used-by \Df\Framework\Console\Command::execute()
 	 * @return void
 	 */
-	protected function p() {$this->output()->writeln(__METHOD__);}
+	protected function p() {
+		df_google_init_service_account();
+		$this->output()->writeln(__METHOD__);
+	}
 }
