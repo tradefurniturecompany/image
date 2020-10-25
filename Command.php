@@ -18,6 +18,6 @@ final class Command extends \Df\Framework\Console\Command {
 	 */
 	protected function p() {
 		df_google_init_service_account();
-		$this->output()->writeln(__METHOD__);
+		$this->output()->writeln(df_dump(scandir(df_product_images_path())));
 	}
 }
