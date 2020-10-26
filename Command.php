@@ -26,7 +26,12 @@ final class Command extends \Df\Framework\Console\Command {
 	 */
 	protected function p() {
 		df_google_init_service_account();
-		foreach ($this->images() as $i) {/** @var sttring $i */
+		$ii = array_slice($this->images(), 0, 10); /** @var string[] $ii */
+		$count = count($ii); /** @var int $count */
+		$c = 0;
+		foreach ($ii as $i) {/** @var string $i */
+			$c++;
+			$this->output()->writeln(sprintf("%d of %d (%d%%): %s", $c, $count, $c * 100 / $count, df_product_image_path2rel($i)));
 			$this->image($i);
 		}
 	}
@@ -44,7 +49,6 @@ final class Command extends \Df\Framework\Console\Command {
 		finally {$a->close();}
 		$oo = $res->getLocalizedObjectAnnotations(); /** @var RepeatedField $oo */
 		if (1 === $oo->count()) {
-			$this->output()->writeln($path);
 			# 2020-10-26 https://cloud.google.com/vision/docs/reference/rest/v1/AnnotateImageResponse#LocalizedObjectAnnotation
 			$o = $oo[0]; /** @var O $o */
 			# 2020-10-26
@@ -66,7 +70,7 @@ final class Command extends \Df\Framework\Console\Command {
 					,'width' => $x($v2->getX() - $v0->getX())
 					,'x' => $x($v0->getX()), 'y' => $y($v0->getY())
 				]);
-				$path = str_replace(df_product_images_path(), df_cc_path(dirname(BP), 'result'), $path);
+				$path = df_cc_path(dirname(BP), 'result', df_product_image_path2rel($path));
 				if (!is_dir($dir = dirname($path))) {
 					mkdir($dir, 777, true);
 				}

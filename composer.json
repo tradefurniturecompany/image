@@ -1,6 +1,6 @@
 {
 	"name": "tradefurniturecompany/image"
-	,"version": "0.0.3"
+	,"version": "0.0.4"
 	,"description": "A custom image processing module for tradefurniturecompany.co.uk (Magento 2)"
 	,"type": "magento2-module"
 	,"homepage": "https://github.com/tradefurniturecompany/image"
@@ -11,7 +11,7 @@
 		,"homepage": "https://mage2.pro/users/dmitry_fedyuk"
 		,"role": "Developer"
 	}]
-	,"require": {"google/cloud-vision": "*", "mage2pro/core": ">=7.0.10"}
+	,"require": {"google/cloud-vision": "*", "mage2pro/core": ">=7.0.2"}
 	,"autoload": {"files": ["registration.php"], "psr-4": {"TFC\\Image\\": ""}}
 	,"keywords": [
 		"eCommerce"
