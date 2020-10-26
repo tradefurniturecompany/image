@@ -72,7 +72,7 @@ final class Command extends \Df\Framework\Console\Command {
 				]);
 				$path = df_cc_path(dirname(BP), 'result', df_product_image_path2rel($path));
 				if (!is_dir($dir = dirname($path))) {
-					mkdir($dir, 777, true);
+					mkdir($dir, 0777, true);
 				}
 				imagejpeg($im2, $path);
 				imagedestroy($im2);
