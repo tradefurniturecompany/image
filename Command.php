@@ -26,7 +26,7 @@ final class Command extends \Df\Framework\Console\Command {
 	 */
 	protected function p() {
 		df_google_init_service_account();
-		$ii = array_slice($this->images(), 0, 10); /** @var string[] $ii */
+		$ii = $this->images(); /** @var string[] $ii */
 		$count = count($ii); /** @var int $count */
 		$c = 0;
 		foreach ($ii as $i) {/** @var string $i */

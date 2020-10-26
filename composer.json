@@ -1,6 +1,6 @@
 {
 	"name": "tradefurniturecompany/image"
-	,"version": "0.0.4"
+	,"version": "0.0.5"
 	,"description": "A custom image processing module for tradefurniturecompany.co.uk (Magento 2)"
 	,"type": "magento2-module"
 	,"homepage": "https://github.com/tradefurniturecompany/image"
