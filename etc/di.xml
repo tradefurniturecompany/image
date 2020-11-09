@@ -6,7 +6,8 @@
 	<type name='Magento\Framework\Console\CommandListInterface'>
 		<arguments>
 			<argument name='commands' xsi:type='array'>
-				<item name='uninstall_language' xsi:type='object'>TFC\Image\Command</item>
+				<item name='TFC\Image\Command\C1' xsi:type='object'>TFC\Image\Command\C1</item>
+				<item name='TFC\Image\Command\C2' xsi:type='object'>TFC\Image\Command\C2</item>
 			</argument>
 		</arguments>
 	</type>

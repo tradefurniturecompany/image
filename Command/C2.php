@@ -1,5 +1,5 @@
 <?php
-namespace TFC\Image;
+namespace TFC\Image\Command;
 use Google\Cloud\Vision\V1\AnnotateImageResponse as Res;
 use Google\Cloud\Vision\V1\BoundingPoly;
 use Google\Cloud\Vision\V1\ImageAnnotatorClient as Annotator;
@@ -8,14 +8,14 @@ use Google\Cloud\Vision\V1\NormalizedVertex as V;
 use Google\Protobuf\Internal\RepeatedField;
 use RecursiveDirectoryIterator as RDI;
 use RecursiveIteratorIterator as RII;
-# 2020-10-25
-final class Command extends \Df\Framework\Console\Command {
+# 2020-11-09 "Images with a grey text are incorrectly cropped": https://github.com/tradefurniturecompany/image/issues/2
+final class C2 extends \Df\Framework\Console\Command {
 	/**
 	 * 2020-10-25
 	 * @override
 	 * @see \Symfony\Component\Console\Command\Command::configure()
 	 */
-	protected function configure() {$this->setName('tfc:image')->setDescription('Processes product images');}
+	protected function configure() {$this->setName('tfc:image:2')->setDescription('Processes product images');}
 
 	/**
 	 * 2020-10-25
