@@ -1,13 +1,12 @@
 <?php
 namespace TFC\Image\Command;
+use Google\ApiCore\ApiException as AE;
 use Google\Cloud\Vision\V1\AnnotateImageResponse as Res;
 use Google\Cloud\Vision\V1\BoundingPoly;
 use Google\Cloud\Vision\V1\ImageAnnotatorClient as Annotator;
 use Google\Cloud\Vision\V1\LocalizedObjectAnnotation as O;
 use Google\Cloud\Vision\V1\NormalizedVertex as V;
 use Google\Protobuf\Internal\RepeatedField;
-use RecursiveDirectoryIterator as RDI;
-use RecursiveIteratorIterator as RII;
 # 2020-10-25
 final class C1 extends \Df\Framework\Console\Command {
 	/**
@@ -20,9 +19,9 @@ final class C1 extends \Df\Framework\Console\Command {
 	/**
 	 * 2020-10-25
 	 * @override
+	 * @throws \Google\ApiCore\ApiException
 	 * @see \Df\Framework\Console\Command::p()
 	 * @used-by \Df\Framework\Console\Command::execute()
-	 * @return void
 	 */
 	protected function p() {
 		df_google_init_service_account();
@@ -40,7 +39,7 @@ final class C1 extends \Df\Framework\Console\Command {
 	 * 2020-10-26
 	 * @used-by p()
 	 * @param string $path
-	 * @throws \Google\ApiCore\ApiException
+	 * @throws AE
 	 */
 	private function image($path) {
 		$a = new Annotator; /** @var Annotator $a */
@@ -104,7 +103,7 @@ final class C1 extends \Df\Framework\Console\Command {
 			if (is_dir($f = $base . $f)) {
 				$r = array_merge($r, $this->scan($f));
 			}
-			else if (in_array(strtolower(df_file_ext($f)), ['jpg', 'jpeg'])) {
+			elseif (in_array(strtolower(df_file_ext($f)), ['jpg', 'jpeg'])) {
 				$r[]= $f;
 			}
 		}

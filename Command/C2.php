@@ -9,10 +9,9 @@ use Google\Cloud\Vision\V1\LocalizedObjectAnnotation as O;
 use Google\Cloud\Vision\V1\NormalizedVertex as NV;
 use Google\Cloud\Vision\V1\Vertex as V;
 use Google\Protobuf\Internal\RepeatedField;
-use RecursiveDirectoryIterator as RDI;
-use RecursiveIteratorIterator as RII;
 use Symfony\Component\Console\Input\InputArgument as Arg;
 use Symfony\Component\Console\Input\InputOption as Opt;
+use TFC\Image\I;
 # 2020-11-09 "Images with a grey text are incorrectly cropped": https://github.com/tradefurniturecompany/image/issues/2
 final class C2 extends \Df\Framework\Console\Command {
 	/**
@@ -25,24 +24,22 @@ final class C2 extends \Df\Framework\Console\Command {
 		$this->setDefinition([new Opt(self::$P_CATEGORY, null, Arg::OPTIONAL)]);
 	}
 
-	private static $P_CATEGORY = 'category';
-
 	/**
 	 * 2020-10-25
 	 * @override
 	 * @see \Df\Framework\Console\Command::p()
 	 * @used-by \Df\Framework\Console\Command::execute()
-	 * @return void
+	 * @throws AE
 	 */
 	protected function p() {
 		#$opts = $this->input()->getOptions();
 		#$this->output()->writeln($this->input()->getOption(self::$P_CATEGORY));
 		#return;
 		df_google_init_service_account();
-		$path = dirname(BP) . '/test/1.jpg';
-		$ta = $this->annotationsText($path); /** @var RepeatedField $ta */
+		$i = new I(dirname(BP) . '/test/1.jpg');
+		$ta = $i->annotationsText(); /** @var RepeatedField $ta */
 		if ($ta->count()) {
-			$oo = $this->annotationsObject($path); /** @var RepeatedField $oo */
+			$oo = $i->annotationsObject(); /** @var RepeatedField $oo */
 			if (1 === $oo->count()) {
 				# 2020-10-26
 				# https://cloud.google.com/vision/docs/reference/rest/v1/AnnotateImageResponse#LocalizedObjectAnnotation
@@ -54,7 +51,8 @@ final class C2 extends \Df\Framework\Console\Command {
 				$vvT = $bpT->getVertices(); /** @var RepeatedField $vvT */
 				$bpO = $o->getBoundingPoly(); /** @var BoundingPoly $bpO */
 				$vvO = $bpO->getNormalizedVertices(); /** @var RepeatedField $vvO */
-				list($w, $h) = getimagesize($path); /** @var int $w */ /** @var int $h */
+				/** @var int $w */ $w = $i->w();
+				/** @var int $h */ $h = $i->h();
 				$f = function($a, $b) {return round($a * $b);};
 				$x = function($a) use($f, $w) {return $f($w, $a);};
 				$y = function($a) use($f, $h) {return $f($h, $a);};
@@ -64,8 +62,8 @@ final class C2 extends \Df\Framework\Console\Command {
 					$r->setY($y($v->getY()));
 					return $r;
 				};
-				$v0O = $n2v($vvO[0]); /** @var V $v0O */
-				$v2O = $n2v($vvO[2]); /** @var V $v2O */
+				/** @var V $v0O */ $v0O = $n2v($vvO[0]);
+				/** @var V $v2O */ $v2O = $n2v($vvO[2]);
 				$pad = function(V $v0, V $v2) use($w, $h) {
 					$d = 10;
 					$v0->setX(max(0, $v0->getX() - $d));
@@ -87,14 +85,14 @@ final class C2 extends \Df\Framework\Console\Command {
 					return [$r0, $r2];
 				};
 				list($v0, $v2) = $union($v0O, $v2O, $v0T, $v2T);
-				$im = imagecreatefromjpeg($path);
+				$im = $i->createResource();
 				try {
 					$im2 = imagecrop($im, [
 						'height' => $v2->getY() - $v0->getY()
 						,'width' => $v2->getX() - $v0->getX()
 						,'x' => $v0->getX(), 'y' => $v0->getY()
 					]);
-					$path = df_cc_path(dirname(BP), 'result', basename($path));
+					$path = df_cc_path(dirname(BP), 'result', $i->basename());
 					if (!is_dir($dir = dirname($path))) {
 						mkdir($dir, 0777, true);
 					}
@@ -107,31 +105,9 @@ final class C2 extends \Df\Framework\Console\Command {
 	}
 
 	/**
-	 * 2020-11-10
-	 * @used-by p()
-	 * @param string $path
-	 * @return RepeatedField
-	 * @throws AE
+	 * 2020-10-11
+	 * @used-by configure()
+	 * @var string
 	 */
-	private function annotationsObject($path) {
-		$a = new Annotator; /** @var Annotator $a */
-		try {$resO = $a->objectLocalization($f); /** @var Res $resO */}
-		finally {$a->close();}
-		return $resO->getLocalizedObjectAnnotations();
-	}
-
-	/**
-	 * 2020-11-10
-	 * @used-by p()
-	 * @param string $path
-	 * @return RepeatedField
-	 * @throws AE
-	 */
-	private function annotationsText($path) {
-		$a = new Annotator; /** @var Annotator $a */
-		$f = file_get_contents($path); /** @var string $f */
-		try {$resT = $a->textDetection($f); /** @var Res $resT */}
-		finally {$a->close();}
-		return $resT->getTextAnnotations();
-	}
+	private static $P_CATEGORY = 'category';
 }
