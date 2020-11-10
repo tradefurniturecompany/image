@@ -1,10 +1,8 @@
 <?php
 namespace TFC\Image\Command;
 use Google\ApiCore\ApiException as AE;
-use Google\Cloud\Vision\V1\AnnotateImageResponse as Res;
 use Google\Cloud\Vision\V1\BoundingPoly;
 use Google\Cloud\Vision\V1\EntityAnnotation as EA;
-use Google\Cloud\Vision\V1\ImageAnnotatorClient as Annotator;
 use Google\Cloud\Vision\V1\LocalizedObjectAnnotation as O;
 use Google\Cloud\Vision\V1\NormalizedVertex as NV;
 use Google\Cloud\Vision\V1\Vertex as V;
