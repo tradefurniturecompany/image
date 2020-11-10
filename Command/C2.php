@@ -1,5 +1,6 @@
 <?php
 namespace TFC\Image\Command;
+use Google\ApiCore\ApiException as AE;
 use Google\Cloud\Vision\V1\AnnotateImageResponse as Res;
 use Google\Cloud\Vision\V1\BoundingPoly;
 use Google\Cloud\Vision\V1\EntityAnnotation as EA;
@@ -10,6 +11,8 @@ use Google\Cloud\Vision\V1\Vertex as V;
 use Google\Protobuf\Internal\RepeatedField;
 use RecursiveDirectoryIterator as RDI;
 use RecursiveIteratorIterator as RII;
+use Symfony\Component\Console\Input\InputArgument as Arg;
+use Symfony\Component\Console\Input\InputOption as Opt;
 # 2020-11-09 "Images with a grey text are incorrectly cropped": https://github.com/tradefurniturecompany/image/issues/2
 final class C2 extends \Df\Framework\Console\Command {
 	/**
@@ -17,7 +20,12 @@ final class C2 extends \Df\Framework\Console\Command {
 	 * @override
 	 * @see \Symfony\Component\Console\Command\Command::configure()
 	 */
-	protected function configure() {$this->setName('tfc:image:2')->setDescription('Processes product images');}
+	protected function configure() {
+		$this->setName('tfc:image:2')->setDescription('Processes product images');
+		$this->setDefinition([new Opt(self::$P_CATEGORY, null, Arg::OPTIONAL)]);
+	}
+
+	private static $P_CATEGORY = 'category';
 
 	/**
 	 * 2020-10-25
@@ -27,18 +35,14 @@ final class C2 extends \Df\Framework\Console\Command {
 	 * @return void
 	 */
 	protected function p() {
+		#$opts = $this->input()->getOptions();
+		#$this->output()->writeln($this->input()->getOption(self::$P_CATEGORY));
+		#return;
 		df_google_init_service_account();
 		$path = dirname(BP) . '/test/1.jpg';
-		$a = new Annotator; /** @var Annotator $a */
-		$f = file_get_contents($path); /** @var string $f */
-		try {$resT = $a->textDetection($f); /** @var Res $resT */}
-		finally {$a->close();}
-		$ta = $resT->getTextAnnotations(); /** @var RepeatedField $ta */
+		$ta = $this->annotationsText($path); /** @var RepeatedField $ta */
 		if ($ta->count()) {
-			$a = new Annotator; /** @var Annotator $a */
-			try {$resO = $a->objectLocalization($f); /** @var Res $resO */}
-			finally {$a->close();}
-			$oo = $resO->getLocalizedObjectAnnotations(); /** @var RepeatedField $oo */
+			$oo = $this->annotationsObject($path); /** @var RepeatedField $oo */
 			if (1 === $oo->count()) {
 				# 2020-10-26
 				# https://cloud.google.com/vision/docs/reference/rest/v1/AnnotateImageResponse#LocalizedObjectAnnotation
@@ -100,5 +104,34 @@ final class C2 extends \Df\Framework\Console\Command {
 				finally {imagedestroy($im);}
 			}
 		}
+	}
+
+	/**
+	 * 2020-11-10
+	 * @used-by p()
+	 * @param string $path
+	 * @return RepeatedField
+	 * @throws AE
+	 */
+	private function annotationsObject($path) {
+		$a = new Annotator; /** @var Annotator $a */
+		try {$resO = $a->objectLocalization($f); /** @var Res $resO */}
+		finally {$a->close();}
+		return $resO->getLocalizedObjectAnnotations();
+	}
+
+	/**
+	 * 2020-11-10
+	 * @used-by p()
+	 * @param string $path
+	 * @return RepeatedField
+	 * @throws AE
+	 */
+	private function annotationsText($path) {
+		$a = new Annotator; /** @var Annotator $a */
+		$f = file_get_contents($path); /** @var string $f */
+		try {$resT = $a->textDetection($f); /** @var Res $resT */}
+		finally {$a->close();}
+		return $resT->getTextAnnotations();
 	}
 }
