@@ -27,7 +27,7 @@ final class I {
 	});}
 
 	/**
-	 * 2020-11-10
+	 * 2020-11-10 https://cloud.google.com/vision/docs/ocr
 	 * @used-by \TFC\Image\Command\C2::p()
 	 * @return RepeatedField
 	 * @throws AE
