@@ -8,6 +8,7 @@
 			<argument name='commands' xsi:type='array'>
 				<item name='TFC\Image\Command\C1' xsi:type='object'>TFC\Image\Command\C1</item>
 				<item name='TFC\Image\Command\C2' xsi:type='object'>TFC\Image\Command\C2</item>
+				<item name='TFC\Image\Command\C3' xsi:type='object'>TFC\Image\Command\C3</item>
 			</argument>
 		</arguments>
 	</type>
