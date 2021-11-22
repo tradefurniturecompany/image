@@ -13,6 +13,7 @@ final class C1 extends \Df\Framework\Console\Command {
 	 * 2020-10-25
 	 * @override
 	 * @see \Symfony\Component\Console\Command\Command::configure()
+	 * @used-by \Symfony\Component\Console\Command\Command::__construct()
 	 */
 	protected function configure() {$this->setName('tfc:image:1')->setDescription('Processes product images');}
 
