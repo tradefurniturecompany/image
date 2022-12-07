@@ -44,6 +44,9 @@ final class I {
 
 	/**
 	 * 2020-11-10
+	 * 2022-12-07
+	 * It will return @see \GDImage in PHP ≥ 8:
+	 * https://www.php.net/manual/function.imagecreatefromjpeg.php#refsect1-function.imagecreatefromjpeg-changelog
 	 * @used-by \TFC\Image\Command\C2::p()
 	 * @return resource
 	 */
