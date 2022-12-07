@@ -87,7 +87,7 @@ final class C1 extends \Df\Framework\Console\Command {
 	 * @used-by p()
 	 * @return string[]
 	 */
-	private function images() {return dfc($this, function() {return $this->scan(
+	private function images():array {return dfc($this, function() {return $this->scan(
 		df_product_images_path(), ['cache', 'placeholder']
 	);});}
 
