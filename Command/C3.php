@@ -37,6 +37,7 @@ final class C3 extends \Df\Framework\Console\Command {
 
 	/**
 	 * 2020-11-22
+	 * @used-by self::p()
 	 * @return I|null
 	 */
 	private function findLabeled(P $p, string $base) {return df_find(function(_DO $io) use($base) {
