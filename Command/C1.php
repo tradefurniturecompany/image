@@ -98,7 +98,7 @@ final class C1 extends \Df\Framework\Console\Command {
 	 * @param string[] $skip [optional]
 	 * @return string[]
 	 */
-	private function scan(string $base, $skip = []) {
+	private function scan(string $base, array $skip = []):array {
 		$r = []; /** @var string[] $r */
 		foreach (array_diff(scandir($base = "$base/"), array_merge($skip, ['.', '..'])) as $f) {
 			if (is_dir($f = $base . $f)) {
