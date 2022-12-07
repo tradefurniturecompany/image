@@ -37,7 +37,6 @@ final class C3 extends \Df\Framework\Console\Command {
 
 	/**
 	 * 2020-11-22
-	 * @param P $p
 	 * @param string $base
 	 * @return I|null
 	 */
