@@ -68,6 +68,7 @@ final class C3 extends \Df\Framework\Console\Command {
 
 	/**
 	 * 2020-11-22
+	 * @used-by self::pcL()
 	 * @var string
 	 */
 	private static $CONN_L = '2020_07_04';
