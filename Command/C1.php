@@ -95,11 +95,10 @@ final class C1 extends \Df\Framework\Console\Command {
 	 * 2020-10-26
 	 * @used-by self::images()
 	 * @used-by self::scan()
-	 * @param string $base
 	 * @param string[] $skip [optional]
 	 * @return string[]
 	 */
-	private function scan($base, $skip = []) {
+	private function scan(string $base, $skip = []) {
 		$r = []; /** @var string[] $r */
 		foreach (array_diff(scandir($base = "$base/"), array_merge($skip, ['.', '..'])) as $f) {
 			if (is_dir($f = $base . $f)) {
