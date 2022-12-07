@@ -43,7 +43,7 @@ final class C1 extends \Df\Framework\Console\Command {
 	 * @used-by p()
 	 * @throws AE
 	 */
-	private function image(string $path) {
+	private function image(string $path):void {
 		$a = new Annotator; /** @var Annotator $a */
 		$f = file_get_contents($path); /** @var string $f */
 		try {$res = $a->objectLocalization($f); /** @var Res $res */}
