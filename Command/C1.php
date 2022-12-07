@@ -40,7 +40,7 @@ final class C1 extends \Df\Framework\Console\Command {
 
 	/**
 	 * 2020-10-26
-	 * @used-by p()
+	 * @used-by self::p()
 	 * @throws AE
 	 */
 	private function image(string $path):void {
@@ -84,7 +84,7 @@ final class C1 extends \Df\Framework\Console\Command {
 
 	/**
 	 * 2020-10-26
-	 * @used-by p()
+	 * @used-by self::p()
 	 * @return string[]
 	 */
 	private function images():array {return dfc($this, function() {return $this->scan(
@@ -93,8 +93,8 @@ final class C1 extends \Df\Framework\Console\Command {
 
 	/**
 	 * 2020-10-26
-	 * @used-by images()
-	 * @used-by scan()
+	 * @used-by self::images()
+	 * @used-by self::scan()
 	 * @param string $base
 	 * @param string[] $skip [optional]
 	 * @return string[]
