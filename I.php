@@ -70,7 +70,7 @@ final class I {
 	 * @used-by annotationsObject()
 	 * @return string
 	 */
-	private function f() {return dfc($this, function() {return file_get_contents($this->_path);});}
+	private function f():string {return dfc($this, function() {return file_get_contents($this->_path);});}
 
 	/**
 	 * 2020-11-10
