@@ -53,9 +53,8 @@ final class C3 extends \Df\Framework\Console\Command {
 
 	/**
 	 * 2020-11-22
-	 * @return PC
 	 */
-	private function pcL() {return dfc($this, function() {return df_with_conn(self::$CONN_L, function() {return $this->pcPrepare(
+	private function pcL():PC {return dfc($this, function() {return df_with_conn(self::$CONN_L, function() {return $this->pcPrepare(
 		df_pc()->setPageSize(1)->addFieldToFilter('entity_id', 116)
 	);});});}
 
