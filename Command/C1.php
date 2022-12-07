@@ -20,9 +20,9 @@ final class C1 extends \Df\Framework\Console\Command {
 	/**
 	 * 2020-10-25
 	 * @override
-	 * @throws \Google\ApiCore\ApiException
 	 * @see \Df\Framework\Console\Command::p()
 	 * @used-by \Df\Framework\Console\Command::execute()
+	 * @throws AE
 	 */
 	protected function p():void {
 		df_google_init_service_account();
