@@ -20,7 +20,6 @@ final class C3 extends \Df\Framework\Console\Command {
 	 * @override
 	 * @see \Df\Framework\Console\Command::p()
 	 * @used-by \Df\Framework\Console\Command::execute()
-	 * @throws LE
 	 */
 	protected function p():void {
 		$conn = '2020_07_04';
