@@ -10,7 +10,7 @@ final class I {
 	 * 2020-11-10
 	 * @used-by \TFC\Image\Command\C2::p()
 	 */
-	function __construct(string $path) {$this->_path = $path;}
+	function __construct(string $p) {$this->_path = $p;}
 
 	/**
 	 * 2020-11-10
