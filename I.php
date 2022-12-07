@@ -39,9 +39,8 @@ final class I {
 	/**
 	 * 2020-11-10
 	 * @used-by \TFC\Image\Command\C2::p()
-	 * @return string
 	 */
-	function basename() {return basename($this->_path);}
+	function basename():string {return basename($this->_path);}
 
 	/**
 	 * 2020-11-10
