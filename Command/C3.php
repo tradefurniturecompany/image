@@ -47,6 +47,7 @@ final class C3 extends \Df\Framework\Console\Command {
 
 	/**
 	 * 2020-11-22
+	 * @used-by self::p()
 	 */
 	private function pc():PC {return dfc($this, function() {return $this->pcPrepare(df_pc());});}
 
