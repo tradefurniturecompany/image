@@ -61,9 +61,8 @@ final class I {
 	/**
 	 * 2020-11-10
 	 * @used-by \TFC\Image\Command\C2::p()
-	 * @return int
 	 */
-	function w() {return $this->size()[0];}
+	function w():int {return $this->size()[0];}
 
 	/**
 	 * 2020-11-10
