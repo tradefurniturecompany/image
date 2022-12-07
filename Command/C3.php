@@ -1,6 +1,5 @@
 <?php
 namespace TFC\Image\Command;
-use Google\Protobuf\Internal\RepeatedField;
 use Magento\Catalog\Model\Product as P;
 use Magento\Catalog\Model\ResourceModel\Product\Collection as PC;
 use Magento\Framework\DataObject as _DO;
