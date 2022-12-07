@@ -18,7 +18,7 @@ final class C2 extends \Df\Framework\Console\Command {
 	 * @see \Symfony\Component\Console\Command\Command::configure()
 	 * @used-by \Symfony\Component\Console\Command\Command::__construct()
 	 */
-	protected function configure() {
+	protected function configure():void {
 		$this->setName('tfc:image:2')->setDescription('Processes product images');
 		$this->setDefinition([new Opt(self::$P_CATEGORY, null, Arg::OPTIONAL)]);
 	}
