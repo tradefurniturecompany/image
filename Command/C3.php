@@ -37,10 +37,9 @@ final class C3 extends \Df\Framework\Console\Command {
 
 	/**
 	 * 2020-11-22
-	 * @param string $base
 	 * @return I|null
 	 */
-	private function findLabeled(P $p, $base) {return df_find(function(_DO $io) use($base) {
+	private function findLabeled(P $p, string $base) {return df_find(function(_DO $io) use($base) {
 		$i = new I($base . $io['file']); /** @var I $i */
 		return $i->annotationsText()->count() ? $i : null;
 	}, $p->getMediaGalleryImages());}
