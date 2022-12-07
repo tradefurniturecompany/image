@@ -105,7 +105,7 @@ final class C2 extends \Df\Framework\Console\Command {
 
 	/**
 	 * 2020-10-11
-	 * @used-by configure()
+	 * @used-by self::configure()
 	 * @var string
 	 */
 	private static $P_CATEGORY = 'category';
