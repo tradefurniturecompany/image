@@ -27,10 +27,9 @@ final class I {
 	/**
 	 * 2020-11-10 https://cloud.google.com/vision/docs/ocr
 	 * @used-by \TFC\Image\Command\C2::p()
-	 * @return RepeatedField
 	 * @throws AE
 	 */
-	function annotationsText() {return dfc($this, function() {
+	function annotationsText():RepeatedField {return dfc($this, function():RepeatedField {
 		$a = new Annotator; /** @var Annotator $a */
 		try {$resT = $a->textDetection($this->f()); /** @var Res $resT */}
 		finally {$a->close();}
