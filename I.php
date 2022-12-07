@@ -17,7 +17,7 @@ final class I {
 	 * @used-by \TFC\Image\Command\C2::p()
 	 * @throws AE
 	 */
-	function annotationsObject():RepeatedField {return dfc($this, function() {
+	function annotationsObject():RepeatedField {return dfc($this, function():RepeatedField {
 		$a = new Annotator; /** @var Annotator $a */
 		try {$resO = $a->objectLocalization($this->f()); /** @var Res $resO */}
 		finally {$a->close();}
