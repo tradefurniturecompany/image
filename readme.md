@@ -9,7 +9,7 @@ bin/magento maintenance:enable
 rm -rf composer.lock
 composer clear-cache
 composer2 require --ignore-platform-reqs --no-plugins tradefurniturecompany/image:*
-composer update
+composer update # https://mage2.pro/t/6327/2
 rm -rf var/di var/generation generated/*
 bin/magento setup:upgrade
 bin/magento cache:enable
@@ -41,7 +41,7 @@ composer remove tradefurniturecompany/image
 rm -rf composer.lock
 composer clear-cache
 composer2 require --ignore-platform-reqs --no-plugins tradefurniturecompany/image:*
-composer update
+composer update # https://mage2.pro/t/6327/2
 rm -rf var/di var/generation generated/*
 bin/magento setup:upgrade
 bin/magento cache:enable
