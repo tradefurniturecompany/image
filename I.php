@@ -66,9 +66,8 @@ final class I {
 
 	/**
 	 * 2020-11-10
-	 * @used-by annotationsText()
-	 * @used-by annotationsObject()
-	 * @return string
+	 * @used-by self::annotationsObject()
+	 * @used-by self::annotationsText()
 	 */
 	private function f():string {return dfc($this, function() {return file_get_contents($this->_path);});}
 
