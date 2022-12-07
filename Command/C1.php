@@ -31,7 +31,9 @@ final class C1 extends \Df\Framework\Console\Command {
 		$c = 0;
 		foreach ($ii as $i) {/** @var string $i */
 			$c++;
-			$this->output()->writeln(sprintf("%d of %d (%d%%): %s", $c, $count, $c * 100 / $count, df_product_image_path2rel($i)));
+			$this->output()->writeln(sprintf(
+				"%d of %d (%d%%): %s", $c, $count, $c * 100 / $count, df_product_image_path2rel($i)
+			));
 			$this->image($i);
 		}
 	}
