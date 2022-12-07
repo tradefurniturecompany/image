@@ -81,11 +81,11 @@ final class I {
 
 	/**
 	 * 2020-11-10
-	 * @used-by __construct()
-	 * @used-by basename()
-	 * @used-by createResource()
-	 * @used-by f()
-	 * @used-by size()
+	 * @used-by self::__construct()
+	 * @used-by self::basename()
+	 * @used-by self::createResource()
+	 * @used-by self::f()
+	 * @used-by self::size()
 	 * @var string
 	 */
 	private $_path;
