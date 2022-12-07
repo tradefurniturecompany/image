@@ -73,11 +73,11 @@ final class I {
 
 	/**
 	 * 2020-11-10
-	 * @used-by h()
-	 * @used-by w()
+	 * @used-by self::h()
+	 * @used-by self::w()
 	 * @return int[]
 	 */
-	private function size() {return dfc($this, function() {return getimagesize($this->_path);});}
+	private function size():array {return dfc($this, function() {return getimagesize($this->_path);});}
 
 	/**
 	 * 2020-11-10
