@@ -60,8 +60,8 @@ final class C3 extends \Df\Framework\Console\Command {
 
 	/**
 	 * 2020-11-22 https://magento.stackexchange.com/a/228181
-	 * @used-by pc()
-	 * @used-by pcL()
+	 * @used-by self::pc()
+	 * @used-by self::pcL()
 	 */
 	private function pcPrepare(PC $c):PC {return $c->addMediaGalleryData();}
 
