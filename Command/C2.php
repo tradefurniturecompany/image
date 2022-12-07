@@ -30,7 +30,7 @@ final class C2 extends \Df\Framework\Console\Command {
 	 * @used-by \Df\Framework\Console\Command::execute()
 	 * @throws AE
 	 */
-	protected function p() {
+	protected function p():void {
 		#$opts = $this->input()->getOptions();
 		#$this->output()->writeln($this->input()->getOption(self::$P_CATEGORY));
 		#return;

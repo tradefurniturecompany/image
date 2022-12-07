@@ -24,7 +24,7 @@ final class C1 extends \Df\Framework\Console\Command {
 	 * @see \Df\Framework\Console\Command::p()
 	 * @used-by \Df\Framework\Console\Command::execute()
 	 */
-	protected function p() {
+	protected function p():void {
 		df_google_init_service_account();
 		$ii = $this->images(); /** @var string[] $ii */
 		$count = count($ii); /** @var int $count */

@@ -23,7 +23,7 @@ final class C3 extends \Df\Framework\Console\Command {
 	 * @used-by \Df\Framework\Console\Command::execute()
 	 * @throws LE
 	 */
-	protected function p() {
+	protected function p():void {
 		$conn = '2020_07_04';
 		df_google_init_service_account();
 		$base = df_product_images_path(); /** @var string $base */
